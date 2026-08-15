@@ -1,0 +1,30 @@
+title: "Gemma's Learning Log & Portfolio"
+description: "A public log of what I'm learning, week by week."
+author: "Gemma"
+github_username: Gemx2a
+email: ""                               # optional, shown on about page
+
+# URL settings — GitHub Pages fills these in automatically when hosted at
+# https://Gemx2a.github.io, so you usually don't need to touch them.
+url: "https://Gemx2a.github.io"
+baseurl: ""
+
+# Comments (giscus) — you'll get these three values from https://giscus.app
+# after connecting your repo. Paste them here ONCE and every post gets comments.
+giscus:
+  repo: "Gemx2a/Gemx2a.github.io"
+  repo_id: "PASTE_REPO_ID_HERE"
+  category: "General"
+  category_id: "PASTE_CATEGORY_ID_HERE"
+
+# Jekyll build settings — leave as is
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
