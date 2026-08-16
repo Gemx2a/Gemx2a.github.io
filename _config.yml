@@ -10,7 +10,7 @@ bio: >
   I'm Gemma. This site is where I keep a running log of what I'm learning —
   AI, payments, and whatever else pulls my attention — plus the projects I
   build off the back of it. Comment on anything; I'm happy to be corrected.
-profile_image: "/assets/img/profile.svg"   # swap for a real photo, e.g. /assets/img/profile.jpg
+profile_image: "/assets/img/profile.jpg"   # your real photo now — was the generated avatar
 
 url: "https://Gemx2a.github.io"
 baseurl: ""
