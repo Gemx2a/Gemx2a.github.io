@@ -254,16 +254,11 @@ section + section { margin-top: 3rem; }
 
 .card-banner {
   height: 110px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--knowledge-tint), #fff);
   background-size: cover;
   background-position: center;
+  background-color: var(--knowledge-tint);
 }
-.card-banner.p { background: linear-gradient(135deg, var(--projects-tint), #fff); }
-.card-banner.has-image { background-color: var(--rule); }
-.card-icon { font-size: 2.2rem; }
+.card-banner.p { background-color: var(--projects-tint); }
 
 .card-body { padding: 1rem 1.2rem 1.2rem; }
 .card h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
@@ -310,7 +305,7 @@ section + section { margin-top: 3rem; }
 .category-card {
   border: 1px solid var(--rule);
   border-radius: 8px;
-  padding: 1.5rem;
+  overflow: hidden;
   background: var(--paper-raised);
   text-decoration: none;
   color: var(--ink);
@@ -324,7 +319,15 @@ section + section { margin-top: 3rem; }
   box-shadow: 0 8px 20px rgba(28,31,38,0.08);
 }
 
-.category-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+.category-banner {
+  height: 130px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--knowledge-tint);
+}
+
+.category-body { padding: 1.25rem 1.4rem 1.4rem; }
+.category-icon { font-size: 1.6rem; display: block; margin-bottom: 0.4rem; }
 .category-card h2 { font-size: 1.2rem; }
 .category-card p { color: var(--ink-soft); margin: 0.25rem 0 0.75rem; font-size: 0.92rem; }
 .category-card .view-all {
@@ -339,16 +342,11 @@ section + section { margin-top: 3rem; }
   height: 200px;
   border-radius: 8px;
   margin-bottom: 1.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--knowledge-tint), #fff);
   background-size: cover;
   background-position: center;
+  background-color: var(--knowledge-tint);
 }
-.entry-banner.p { background: linear-gradient(135deg, var(--projects-tint), #fff); }
-.entry-banner.has-image { background-color: var(--rule); }
-.entry-banner-icon { font-size: 3.5rem; }
+.entry-banner.p { background-color: var(--projects-tint); }
 
 .entry-header { margin-bottom: 1.75rem; }
 .entry-header h1 { font-size: 1.85rem; margin-bottom: 0.6rem; }

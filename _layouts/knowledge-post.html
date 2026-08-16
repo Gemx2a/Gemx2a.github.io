@@ -3,10 +3,7 @@ layout: default
 ---
 {% assign cat = site.knowledge_categories | where: "key", page.category | first %}
 <article>
-  <div class="entry-banner{% if page.image %} has-image{% endif %}"
-       {% if page.image %}style="background-image:url('{{ page.image | relative_url }}');"{% endif %}>
-    {% unless page.image %}<span class="entry-banner-icon">{{ cat.icon }}</span>{% endunless %}
-  </div>
+  <div class="entry-banner" style="background-image:url('{{ page.image | default: cat.banner | relative_url }}');"></div>
   <div class="entry-header">
     <div class="entry-meta-row">
       <span class="stamp stamp-knowledge">Knowledge · {{ cat.name | default: page.category }}</span>

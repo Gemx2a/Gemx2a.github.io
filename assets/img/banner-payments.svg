@@ -1,0 +1,38 @@
+<svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="payBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EAF1EC"/>
+      <stop offset="100%" stop-color="#FAFAF8"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="220" fill="url(#payBg)"/>
+
+  <!-- receipt sheet -->
+  <g transform="translate(180,20)">
+    <path d="M0,0 H180 V170 L170,180 L160,170 L150,180 L140,170 L130,180 L120,170 L110,180 L100,170 L90,180 L80,170 L70,180 L60,170 L50,180 L40,170 L30,180 L20,170 L10,180 L0,170 Z"
+          fill="#FFFFFF" stroke="#2A5C45" stroke-width="1.6" opacity="0.9"/>
+    <line x1="20" y1="24" x2="160" y2="24" stroke="#2A5C45" stroke-width="2" opacity="0.5"/>
+    <line x1="20" y1="44" x2="140" y2="44" stroke="#2A5C45" stroke-width="1.4" opacity="0.35"/>
+    <line x1="20" y1="60" x2="150" y2="60" stroke="#2A5C45" stroke-width="1.4" opacity="0.35"/>
+    <line x1="20" y1="76" x2="120" y2="76" stroke="#2A5C45" stroke-width="1.4" opacity="0.35"/>
+    <line x1="20" y1="100" x2="160" y2="100" stroke="#2A5C45" stroke-width="2" opacity="0.5"/>
+    <line x1="20" y1="120" x2="130" y2="120" stroke="#2A5C45" stroke-width="1.4" opacity="0.35"/>
+    <line x1="20" y1="136" x2="150" y2="136" stroke="#2A5C45" stroke-width="1.4" opacity="0.35"/>
+  </g>
+
+  <!-- coins -->
+  <g>
+    <circle cx="90" cy="70" r="34" fill="#FAFAF8" stroke="#2A5C45" stroke-width="2.5"/>
+    <circle cx="90" cy="70" r="24" fill="none" stroke="#2A5C45" stroke-width="1.3" opacity="0.6"/>
+    <text x="90" y="79" font-family="Georgia, serif" font-size="26" text-anchor="middle" fill="#2A5C45">$</text>
+
+    <circle cx="65" cy="130" r="22" fill="#FAFAF8" stroke="#2A5C45" stroke-width="2" opacity="0.85"/>
+    <circle cx="65" cy="130" r="15" fill="none" stroke="#2A5C45" stroke-width="1" opacity="0.5"/>
+  </g>
+
+  <!-- arrow motion lines (agentic transaction flow) -->
+  <g stroke="#2A5C45" stroke-width="1.6" opacity="0.5" fill="none">
+    <path d="M120,170 C150,190 170,190 195,175" stroke-dasharray="4 5"/>
+  </g>
+  <polygon points="195,175 187,171 190,181" fill="#2A5C45" opacity="0.5"/>
+</svg>

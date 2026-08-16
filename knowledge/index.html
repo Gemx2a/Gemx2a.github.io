@@ -13,10 +13,13 @@ permalink: /knowledge/
   {% for cat in site.knowledge_categories %}
   {% assign items = site.knowledge | where: "category", cat.key | sort: "date" | reverse %}
   <a class="category-card" href="{{ '/knowledge/' | append: cat.key | append: '/' | relative_url }}">
-    <span class="category-icon">{{ cat.icon }}</span>
-    <h2>{{ cat.name }}</h2>
-    <p>{{ cat.description }}</p>
-    <span class="view-all">{{ items.size }} entr{% if items.size == 1 %}y{% else %}ies{% endif %} →</span>
+    <div class="category-banner" style="background-image:url('{{ cat.banner | relative_url }}');"></div>
+    <div class="category-body">
+      <span class="category-icon">{{ cat.icon }}</span>
+      <h2>{{ cat.name }}</h2>
+      <p>{{ cat.description }}</p>
+      <span class="view-all">{{ items.size }} entr{% if items.size == 1 %}y{% else %}ies{% endif %} →</span>
+    </div>
   </a>
   {% endfor %}
 </div>

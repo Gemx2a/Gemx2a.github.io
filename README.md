@@ -186,19 +186,21 @@ Right now the homepage shows a generated monogram avatar. To use a real photo:
 3. Open `_config.yml`, find `profile_image: "/assets/img/profile.svg"`, and change it to `profile_image: "/assets/img/profile.jpg"`
 4. Commit — the homepage picks it up automatically
 
-### Adding cover images to knowledge entries or projects
+### Cover images on knowledge entries and projects
 
-Any entry can have a cover image instead of the default icon banner. Upload
-an image into `assets/img/` (e.g. `assets/img/agentic-payments-cover.jpg`),
-then add one line to that entry's front matter:
+Every category already has a custom illustrated banner built in — AI and
+Payments entries automatically get a matching cover, and every project gets
+a blueprint-style banner, with no setup needed.
+
+To use a real photo instead on a specific entry, upload an image into
+`assets/img/` (e.g. `assets/img/agentic-payments-cover.jpg`), then add one
+line to that entry's front matter:
 
 ```yaml
 image: "/assets/img/agentic-payments-cover.jpg"
 ```
 
-Entries without an `image` field automatically fall back to the colored
-icon banner (🤖 for AI, 💳 for Payments, 🛠️ for Projects) — no broken
-images, ever.
+That overrides the default illustration for just that one entry.
 
 ## Step 9 — Personalize your intro text
 

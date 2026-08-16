@@ -13,10 +13,7 @@ permalink: /projects/
 <div class="card-grid">
   {% for item in items %}
   <a class="card p" href="{{ item.url | relative_url }}">
-    <div class="card-banner p{% if item.image %} has-image{% endif %}"
-         {% if item.image %}style="background-image:url('{{ item.image | relative_url }}');"{% endif %}>
-      {% unless item.image %}<span class="card-icon">{{ site.projects_icon }}</span>{% endunless %}
-    </div>
+    <div class="card-banner p" style="background-image:url('{{ item.image | default: site.projects_banner | relative_url }}');"></div>
     <div class="card-body">
       <div class="card-meta">{{ item.status | default: "Project" }} · {{ item.date | date: "%b %d, %Y" }}</div>
       <h3>{{ item.title }}</h3>

@@ -28,10 +28,7 @@ title: Home
     {% for item in recent_knowledge %}
     {% assign cat = site.knowledge_categories | where: "key", item.category | first %}
     <a class="card k" href="{{ item.url | relative_url }}">
-      <div class="card-banner{% if item.image %} has-image{% endif %}"
-           {% if item.image %}style="background-image:url('{{ item.image | relative_url }}');"{% endif %}>
-        {% unless item.image %}<span class="card-icon">{{ cat.icon }}</span>{% endunless %}
-      </div>
+      <div class="card-banner" style="background-image:url('{{ item.image | default: cat.banner | relative_url }}');"></div>
       <div class="card-body">
         <div class="card-meta">{{ cat.name | default: item.category }} · {{ item.date | date: "%b %d, %Y" }}</div>
         <h3>{{ item.title }}</h3>
@@ -51,10 +48,7 @@ title: Home
   <div class="card-grid">
     {% for item in recent_projects %}
     <a class="card p" href="{{ item.url | relative_url }}">
-      <div class="card-banner p{% if item.image %} has-image{% endif %}"
-           {% if item.image %}style="background-image:url('{{ item.image | relative_url }}');"{% endif %}>
-        {% unless item.image %}<span class="card-icon">{{ site.projects_icon }}</span>{% endunless %}
-      </div>
+      <div class="card-banner p" style="background-image:url('{{ item.image | default: site.projects_banner | relative_url }}');"></div>
       <div class="card-body">
         <div class="card-meta">{{ item.status | default: "Project" }} · {{ item.date | date: "%b %d, %Y" }}</div>
         <h3>{{ item.title }}</h3>

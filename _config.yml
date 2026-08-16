@@ -40,12 +40,15 @@ knowledge_categories:
     name: "AI Knowledge"
     description: "Models, agents, and how they're built"
     icon: "🤖"
+    banner: "/assets/img/banner-ai.svg"
   - key: payments
     name: "Payment Knowledge"
     description: "Fintech, transactions, and agentic commerce"
     icon: "💳"
+    banner: "/assets/img/banner-payments.svg"
 
 projects_icon: "🛠️"
+projects_banner: "/assets/img/banner-projects.svg"
 
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
