@@ -17,9 +17,9 @@
     <div class="wrap">
       <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
       <nav class="site-nav">
+        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active-home"{% endif %}>Home</a>
         <a href="{{ '/knowledge/' | relative_url }}" class="nav-knowledge{% if page.url contains '/knowledge/' %} active{% endif %}">Knowledge</a>
         <a href="{{ '/projects/' | relative_url }}" class="nav-projects{% if page.url contains '/projects/' %} active{% endif %}">Projects</a>
-        <a href="{{ '/about/' | relative_url }}">About</a>
       </nav>
     </div>
   </header>

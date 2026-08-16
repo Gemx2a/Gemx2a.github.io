@@ -2,6 +2,10 @@
 layout: default
 ---
 <article>
+  <div class="entry-banner p{% if page.image %} has-image{% endif %}"
+       {% if page.image %}style="background-image:url('{{ page.image | relative_url }}');"{% endif %}>
+    {% unless page.image %}<span class="entry-banner-icon">{{ site.projects_icon }}</span>{% endunless %}
+  </div>
   <div class="entry-header">
     <div class="entry-meta-row">
       <span class="stamp stamp-projects">Project{% if page.status %} · {{ page.status }}{% endif %}</span>

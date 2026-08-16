@@ -177,7 +177,42 @@ git push
 
 ---
 
-## Step 8 (optional) — Preview locally before pushing
+## Step 8 — Add your real photo (optional but recommended)
+
+Right now the homepage shows a generated monogram avatar. To use a real photo:
+
+1. Save a square-ish photo of yourself, name it `profile.jpg`
+2. Upload it into `assets/img/` in your repo (same Add file → Upload files flow)
+3. Open `_config.yml`, find `profile_image: "/assets/img/profile.svg"`, and change it to `profile_image: "/assets/img/profile.jpg"`
+4. Commit — the homepage picks it up automatically
+
+### Adding cover images to knowledge entries or projects
+
+Any entry can have a cover image instead of the default icon banner. Upload
+an image into `assets/img/` (e.g. `assets/img/agentic-payments-cover.jpg`),
+then add one line to that entry's front matter:
+
+```yaml
+image: "/assets/img/agentic-payments-cover.jpg"
+```
+
+Entries without an `image` field automatically fall back to the colored
+icon banner (🤖 for AI, 💳 for Payments, 🛠️ for Projects) — no broken
+images, ever.
+
+## Step 9 — Personalize your intro text
+
+Open `_config.yml` and edit:
+
+```yaml
+tagline: "I learn in public and build things along the way."
+bio: >
+  Your own bio paragraph goes here.
+```
+
+This is what shows on the homepage hero next to your photo.
+
+## Step 10 (optional) — Preview locally before pushing
 
 If you have Ruby installed:
 
@@ -194,8 +229,8 @@ layout/CSS and want fast feedback.
 
 ## Your regular workflow going forward
 
-1. Learn something.
-2. Create a new file in `_posts/` following the naming pattern.
+1. Learn something, or ship something.
+2. Create a new file in `_knowledge/` or `_projects/` (see Step 7).
 3. `git add`, `git commit`, `git push`.
 4. Live on your site within ~1 minute, comments open.
 
@@ -203,15 +238,15 @@ layout/CSS and want fast feedback.
 
 | File/Folder | Purpose |
 |---|---|
-| `_config.yml` | Site title, giscus keys, and the list of knowledge categories |
+| `_config.yml` | Site title, your intro text, giscus keys, knowledge categories |
 | `_knowledge/` | Every knowledge entry — one file per entry |
 | `_projects/` | Every project — one file per project |
 | `_layouts/default.html` | Header, nav, footer — wraps every page |
-| `_layouts/knowledge-post.html` | Wraps each knowledge entry (tags, category stamp, comments) |
-| `_layouts/project.html` | Wraps each project (tech tags, GitHub link, comments) |
-| `index.html` | Homepage — recent knowledge + featured projects |
+| `_layouts/knowledge-post.html` | Wraps each knowledge entry (cover banner, tags, comments) |
+| `_layouts/project.html` | Wraps each project (cover banner, tech tags, GitHub link, comments) |
+| `index.html` | Homepage — your photo/intro hero + recent knowledge + featured projects |
 | `knowledge/index.html` | Knowledge hub — one card per category |
 | `knowledge/ai.html`, `knowledge/payments.html` | Per-category listing pages |
 | `projects/index.html` | Projects hub — all projects as cards |
-| `about.md` | Your bio page |
+| `assets/img/` | Your profile photo and any cover images |
 | `assets/css/style.css` | All styling — edit freely |

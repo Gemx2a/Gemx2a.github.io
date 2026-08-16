@@ -4,6 +4,14 @@ author: "Gemma"
 github_username: Gemx2a
 email: ""
 
+# Shown on the homepage hero. Edit freely — this is your intro.
+tagline: "I learn in public and build things along the way."
+bio: >
+  I'm Gemma. This site is where I keep a running log of what I'm learning —
+  AI, payments, and whatever else pulls my attention — plus the projects I
+  build off the back of it. Comment on anything; I'm happy to be corrected.
+profile_image: "/assets/img/profile.svg"   # swap for a real photo, e.g. /assets/img/profile.jpg
+
 url: "https://Gemx2a.github.io"
 baseurl: ""
 
@@ -26,13 +34,18 @@ collections:
 # ---- Knowledge categories ----
 # To add a new category (e.g. "Design"), add a new block here with a
 # unique key, then use that key in a post's front matter as `category: design`.
+# `icon` is shown on card banners when an entry has no `image` of its own.
 knowledge_categories:
   - key: ai
     name: "AI Knowledge"
     description: "Models, agents, and how they're built"
+    icon: "🤖"
   - key: payments
     name: "Payment Knowledge"
     description: "Fintech, transactions, and agentic commerce"
+    icon: "💳"
+
+projects_icon: "🛠️"
 
 markdown: kramdown
 permalink: /:year/:month/:day/:title/

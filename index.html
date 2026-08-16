@@ -3,8 +3,19 @@ layout: default
 title: Home
 ---
 <div class="hero">
-  <h1>{{ site.title }}</h1>
-  <p>{{ site.description }}</p>
+  <div class="hero-photo">
+    <img src="{{ site.profile_image | relative_url }}" alt="{{ site.author }}">
+  </div>
+  <div class="hero-text">
+    <p class="eyebrow">Hi, I'm {{ site.author }}</p>
+    <h1>{{ site.tagline }}</h1>
+    <p class="bio">{{ site.bio }}</p>
+    <div class="hero-links">
+      <a class="btn btn-knowledge" href="{{ '/knowledge/' | relative_url }}">Browse Knowledge</a>
+      <a class="btn btn-projects" href="{{ '/projects/' | relative_url }}">See Projects</a>
+      <a class="btn btn-ghost" href="https://github.com/{{ site.github_username }}">GitHub ↗</a>
+    </div>
+  </div>
 </div>
 
 {% assign recent_knowledge = site.knowledge | sort: "date" | reverse | slice: 0, 3 %}
@@ -17,9 +28,15 @@ title: Home
     {% for item in recent_knowledge %}
     {% assign cat = site.knowledge_categories | where: "key", item.category | first %}
     <a class="card k" href="{{ item.url | relative_url }}">
-      <div class="card-meta">{{ cat.name | default: item.category }} · {{ item.date | date: "%b %d, %Y" }}</div>
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.summary }}</p>
+      <div class="card-banner{% if item.image %} has-image{% endif %}"
+           {% if item.image %}style="background-image:url('{{ item.image | relative_url }}');"{% endif %}>
+        {% unless item.image %}<span class="card-icon">{{ cat.icon }}</span>{% endunless %}
+      </div>
+      <div class="card-body">
+        <div class="card-meta">{{ cat.name | default: item.category }} · {{ item.date | date: "%b %d, %Y" }}</div>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.summary }}</p>
+      </div>
     </a>
     {% endfor %}
   </div>
@@ -34,9 +51,15 @@ title: Home
   <div class="card-grid">
     {% for item in recent_projects %}
     <a class="card p" href="{{ item.url | relative_url }}">
-      <div class="card-meta">{{ item.status | default: "Project" }} · {{ item.date | date: "%b %d, %Y" }}</div>
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.summary }}</p>
+      <div class="card-banner p{% if item.image %} has-image{% endif %}"
+           {% if item.image %}style="background-image:url('{{ item.image | relative_url }}');"{% endif %}>
+        {% unless item.image %}<span class="card-icon">{{ site.projects_icon }}</span>{% endunless %}
+      </div>
+      <div class="card-body">
+        <div class="card-meta">{{ item.status | default: "Project" }} · {{ item.date | date: "%b %d, %Y" }}</div>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.summary }}</p>
+      </div>
     </a>
     {% endfor %}
   </div>

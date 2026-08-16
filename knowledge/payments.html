@@ -6,19 +6,26 @@ category_key: payments
 ---
 {% assign cat = site.knowledge_categories | where: "key", page.category_key | first %}
 <div class="entry-header">
-  <span class="stamp stamp-knowledge">Knowledge · {{ cat.name }}</span>
+  <span class="stamp stamp-knowledge">{{ cat.icon }} {{ cat.name }}</span>
   <h1 style="margin-top:0.75rem;">{{ cat.name }}</h1>
   <p style="color:var(--ink-soft);">{{ cat.description }}</p>
 </div>
 
 {% assign items = site.knowledge | where: "category", page.category_key | sort: "date" | reverse %}
-<ul class="entry-list">
+<div class="card-grid">
   {% for item in items %}
-  <li>
-    <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
-    <span class="entry-meta">{{ item.date | date: "%b %d, %Y" }}{% if item.tags.size > 0 %} · {% for t in item.tags %}#{{ t }} {% endfor %}{% endif %}</span>
-  </li>
+  <a class="card k" href="{{ item.url | relative_url }}">
+    <div class="card-banner{% if item.image %} has-image{% endif %}"
+         {% if item.image %}style="background-image:url('{{ item.image | relative_url }}');"{% endif %}>
+      {% unless item.image %}<span class="card-icon">{{ cat.icon }}</span>{% endunless %}
+    </div>
+    <div class="card-body">
+      <div class="card-meta">{{ item.date | date: "%b %d, %Y" }}</div>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.summary }}</p>
+    </div>
+  </a>
   {% else %}
-  <li>No entries yet — add a file to <code>_knowledge/</code> with <code>category: {{ page.category_key }}</code>.</li>
+  <p>No entries yet — add a file to <code>_knowledge/</code> with <code>category: {{ page.category_key }}</code>.</p>
   {% endfor %}
-</ul>
+</div>

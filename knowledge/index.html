@@ -9,11 +9,14 @@ permalink: /knowledge/
   <p style="color:var(--ink-soft);">Notes by topic. Comment on anything — corrections and pointers welcome.</p>
 </div>
 
-{% for cat in site.knowledge_categories %}
-{% assign items = site.knowledge | where: "category", cat.key | sort: "date" | reverse %}
-<div class="category-card">
-  <h2>{{ cat.name }}</h2>
-  <p>{{ cat.description }} — {{ items.size }} entr{% if items.size == 1 %}y{% else %}ies{% endif %}</p>
-  <a class="view-all" href="{{ '/knowledge/' | append: cat.key | append: '/' | relative_url }}">View all →</a>
+<div class="category-grid">
+  {% for cat in site.knowledge_categories %}
+  {% assign items = site.knowledge | where: "category", cat.key | sort: "date" | reverse %}
+  <a class="category-card" href="{{ '/knowledge/' | append: cat.key | append: '/' | relative_url }}">
+    <span class="category-icon">{{ cat.icon }}</span>
+    <h2>{{ cat.name }}</h2>
+    <p>{{ cat.description }}</p>
+    <span class="view-all">{{ items.size }} entr{% if items.size == 1 %}y{% else %}ies{% endif %} →</span>
+  </a>
+  {% endfor %}
 </div>
-{% endfor %}

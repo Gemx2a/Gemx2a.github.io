@@ -91,6 +91,76 @@ h1, h2, h3 {
 
 main { padding: 3rem 0 4rem; min-height: 55vh; }
 
+/* ---------------- Hero (photo intro) ---------------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 3rem;
+}
+
+.hero-photo img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(28, 31, 38, 0.12);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.4rem;
+}
+
+.hero-text h1 {
+  font-size: 2rem;
+  max-width: 22ch;
+  margin-bottom: 0.75rem;
+}
+
+.hero-text .bio {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  max-width: 55ch;
+  margin: 0 0 1.5rem;
+}
+
+.hero-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  text-decoration: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  font-weight: 600;
+}
+
+.btn-knowledge { background: var(--knowledge); color: #fff; }
+.btn-knowledge:hover { background: #234a38; }
+.btn-projects { background: var(--projects); color: #fff; }
+.btn-projects:hover { background: #382f61; }
+.btn-ghost { border-color: var(--rule); color: var(--ink-soft); }
+.btn-ghost:hover { border-color: var(--ink-soft); color: var(--ink); }
+
+@media (max-width: 640px) {
+  .hero { grid-template-columns: 1fr; text-align: center; }
+  .hero-photo { justify-self: center; }
+  .hero-text .bio { margin-left: auto; margin-right: auto; }
+  .hero-links { justify-content: center; }
+}
+
 /* ---------------- Stamp tags (signature element) ---------------- */
 
 .stamp {
@@ -170,21 +240,32 @@ section + section { margin-top: 3rem; }
 .card {
   background: var(--paper-raised);
   border: 1px solid var(--rule);
-  border-left: 3px solid var(--rule);
-  border-radius: 4px;
-  padding: 1.1rem 1.2rem;
+  border-radius: 8px;
+  overflow: hidden;
   text-decoration: none;
   color: var(--ink);
   display: block;
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.card:hover { transform: translateY(-1px); }
-.card.k { border-left-color: var(--knowledge); }
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(28,31,38,0.08); }
 .card.k:hover { border-color: var(--knowledge); }
-.card.p { border-left-color: var(--projects); }
 .card.p:hover { border-color: var(--projects); }
 
+.card-banner {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--knowledge-tint), #fff);
+  background-size: cover;
+  background-position: center;
+}
+.card-banner.p { background: linear-gradient(135deg, var(--projects-tint), #fff); }
+.card-banner.has-image { background-color: var(--rule); }
+.card-icon { font-size: 2.2rem; }
+
+.card-body { padding: 1rem 1.2rem 1.2rem; }
 .card h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
 .card .card-meta {
   font-family: var(--font-mono);
@@ -220,24 +301,54 @@ section + section { margin-top: 3rem; }
 
 /* ---------------- Category index cards ---------------- */
 
-.category-card {
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  padding: 1.5rem;
-  background: var(--paper-raised);
-  margin-bottom: 1rem;
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
 }
 
+.category-card {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: var(--paper-raised);
+  text-decoration: none;
+  color: var(--ink);
+  display: block;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.category-card:hover {
+  border-color: var(--knowledge);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(28,31,38,0.08);
+}
+
+.category-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
 .category-card h2 { font-size: 1.2rem; }
-.category-card p { color: var(--ink-soft); margin: 0.25rem 0 0.75rem; }
-.category-card a.view-all {
+.category-card p { color: var(--ink-soft); margin: 0.25rem 0 0.75rem; font-size: 0.92rem; }
+.category-card .view-all {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  text-decoration: none;
   color: var(--knowledge);
 }
 
 /* ---------------- Single entry (knowledge / project) ---------------- */
+
+.entry-banner {
+  height: 200px;
+  border-radius: 8px;
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--knowledge-tint), #fff);
+  background-size: cover;
+  background-position: center;
+}
+.entry-banner.p { background: linear-gradient(135deg, var(--projects-tint), #fff); }
+.entry-banner.has-image { background-color: var(--rule); }
+.entry-banner-icon { font-size: 3.5rem; }
 
 .entry-header { margin-bottom: 1.75rem; }
 .entry-header h1 { font-size: 1.85rem; margin-bottom: 0.6rem; }
