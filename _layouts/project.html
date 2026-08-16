@@ -1,0 +1,47 @@
+---
+layout: default
+---
+<article>
+  <div class="entry-header">
+    <div class="entry-meta-row">
+      <span class="stamp stamp-projects">Project{% if page.status %} · {{ page.status }}{% endif %}</span>
+      <span>{{ page.date | date: "%B %d, %Y" }}</span>
+    </div>
+    <h1>{{ page.title }}</h1>
+    {% if page.tech.size > 0 %}
+    <div class="tag-list">
+      {% for t in page.tech %}<span class="tag-pill">{{ t }}</span>{% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  {% if page.github or page.demo %}
+  <div class="project-links">
+    {% if page.github %}<a href="{{ page.github }}">View code →</a>{% endif %}
+    {% if page.demo %}<a href="{{ page.demo }}">Live demo →</a>{% endif %}
+  </div>
+  {% endif %}
+
+  <div class="entry-content">
+    {{ content }}
+  </div>
+</article>
+
+<section class="comments">
+  <p class="comments-label">Discussion</p>
+  <script src="https://giscus.app/client.js"
+    data-repo="{{ site.giscus.repo }}"
+    data-repo-id="{{ site.giscus.repo_id }}"
+    data-category="{{ site.giscus.category }}"
+    data-category-id="{{ site.giscus.category_id }}"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    data-lang="en"
+    crossorigin="anonymous"
+    async>
+  </script>
+</section>

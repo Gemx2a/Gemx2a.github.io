@@ -1,0 +1,23 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+---
+<div class="entry-header">
+  <span class="stamp stamp-projects">Projects</span>
+  <h1 style="margin-top:0.75rem;">What I've built</h1>
+  <p style="color:var(--ink-soft);">Code, write-ups, and what I'd do differently next time.</p>
+</div>
+
+{% assign items = site.projects | sort: "date" | reverse %}
+<div class="card-grid">
+  {% for item in items %}
+  <a class="card p" href="{{ item.url | relative_url }}">
+    <div class="card-meta">{{ item.status | default: "Project" }} · {{ item.date | date: "%b %d, %Y" }}</div>
+    <h3>{{ item.title }}</h3>
+    <p>{{ item.summary }}</p>
+  </a>
+  {% else %}
+  <p>No projects yet — add a file to <code>_projects/</code>.</p>
+  {% endfor %}
+</div>

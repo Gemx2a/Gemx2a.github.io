@@ -1,0 +1,19 @@
+---
+layout: default
+title: Knowledge
+permalink: /knowledge/
+---
+<div class="entry-header">
+  <span class="stamp stamp-knowledge">Knowledge</span>
+  <h1 style="margin-top:0.75rem;">What I'm learning</h1>
+  <p style="color:var(--ink-soft);">Notes by topic. Comment on anything — corrections and pointers welcome.</p>
+</div>
+
+{% for cat in site.knowledge_categories %}
+{% assign items = site.knowledge | where: "category", cat.key | sort: "date" | reverse %}
+<div class="category-card">
+  <h2>{{ cat.name }}</h2>
+  <p>{{ cat.description }} — {{ items.size }} entr{% if items.size == 1 %}y{% else %}ies{% endif %}</p>
+  <a class="view-all" href="{{ '/knowledge/' | append: cat.key | append: '/' | relative_url }}">View all →</a>
+</div>
+{% endfor %}

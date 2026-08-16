@@ -106,40 +106,72 @@ GitHub rebuilds automatically on every push — no manual deploy step.
 
 ---
 
-## Step 7 — Write your first real post
+## Step 7 — Add a knowledge entry or a project
 
-Posts live in `_posts/` and must be named exactly:
+The site has two content types, each in its own folder. Neither needs a
+special filename pattern — any `.md` file works.
 
-```
-YYYY-MM-DD-short-title.md
-```
+### Adding a knowledge entry
 
-Example: `_posts/2026-08-16-what-i-learned-about-rag.md`
-
-Each post starts with **front matter** (the `---` block) then Markdown:
+Create a file in `_knowledge/`, e.g. `_knowledge/what-is-rag.md`:
 
 ```markdown
 ---
-layout: post
 title: "What I Learned About RAG"
-date: 2026-08-16
+category: ai
 tags: [llm, rag]
+date: 2026-08-16
+summary: "One line shown on the card preview."
 ---
 
 ## The idea
 ...your notes here, normal Markdown...
 ```
 
-Delete or edit the sample post at
-`_posts/2026-08-15-agentic-payments.md` once you're comfortable with the
-format.
+`category` must match a `key` defined in `knowledge_categories` in
+`_config.yml` (currently `ai` or `payments`). It automatically shows up on
+the homepage, on `/knowledge/`, and on its category page.
 
-Commit and push — your new post appears on the homepage automatically,
-newest first.
+**To add a brand-new category** (e.g. "Design"), open `_config.yml` and add
+a block under `knowledge_categories`:
+
+```yaml
+  - key: design
+    name: "Design Knowledge"
+    description: "Notes on UX, visual design, and product thinking"
+```
+
+Then create a matching listing page — copy `knowledge/ai.html`, rename it
+`knowledge/design.html`, and change `permalink` and `category_key` at the
+top to `/knowledge/design/` and `design`.
+
+### Adding a project
+
+Create a file in `_projects/`, e.g. `_projects/my-side-project.md`:
+
+```markdown
+---
+title: "My Side Project"
+summary: "One line shown on the card preview."
+tech: [Python, FastAPI]
+github: "https://github.com/Gemx2a/my-side-project"
+date: 2026-08-16
+status: "Active"
+---
+
+## What it is
+...write-up here...
+```
+
+`status` is free text (`Active`, `Complete`, `Paused` — whatever you want).
+`github` is optional; omit it if there's no public repo yet.
+
+Commit and push — new entries appear automatically, newest first, no other
+files need editing.
 
 ```bash
-git add _posts/
-git commit -m "New post: what I learned about RAG"
+git add _knowledge/ _projects/
+git commit -m "New knowledge entry + project update"
 git push
 ```
 
@@ -171,10 +203,15 @@ layout/CSS and want fast feedback.
 
 | File/Folder | Purpose |
 |---|---|
-| `_config.yml` | Site title, your info, giscus keys |
-| `_posts/` | Every learning log entry — one file per post |
+| `_config.yml` | Site title, giscus keys, and the list of knowledge categories |
+| `_knowledge/` | Every knowledge entry — one file per entry |
+| `_projects/` | Every project — one file per project |
 | `_layouts/default.html` | Header, nav, footer — wraps every page |
-| `_layouts/post.html` | Adds title/date/tags + comments to each post |
-| `index.html` | Homepage — auto-lists all posts |
-| `about.md` | Your portfolio/bio page |
+| `_layouts/knowledge-post.html` | Wraps each knowledge entry (tags, category stamp, comments) |
+| `_layouts/project.html` | Wraps each project (tech tags, GitHub link, comments) |
+| `index.html` | Homepage — recent knowledge + featured projects |
+| `knowledge/index.html` | Knowledge hub — one card per category |
+| `knowledge/ai.html`, `knowledge/payments.html` | Per-category listing pages |
+| `projects/index.html` | Projects hub — all projects as cards |
+| `about.md` | Your bio page |
 | `assets/css/style.css` | All styling — edit freely |

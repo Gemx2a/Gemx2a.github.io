@@ -1,19 +1,43 @@
 ---
 layout: default
-title: Posts
+title: Home
 ---
-<p class="intro">{{ site.description }}</p>
+<div class="hero">
+  <h1>{{ site.title }}</h1>
+  <p>{{ site.description }}</p>
+</div>
 
-<ul class="post-list">
-  {% for post in site.posts %}
-  <li>
-    <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span>
-    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    {% if post.tags.size > 0 %}
-      <span class="post-tags">
-        {% for tag in post.tags %}#{{ tag }} {% endfor %}
-      </span>
-    {% endif %}
-  </li>
-  {% endfor %}
-</ul>
+{% assign recent_knowledge = site.knowledge | sort: "date" | reverse | slice: 0, 3 %}
+<section>
+  <div class="section-head">
+    <h2>Recently learned</h2>
+    <a href="{{ '/knowledge/' | relative_url }}">All knowledge →</a>
+  </div>
+  <div class="card-grid">
+    {% for item in recent_knowledge %}
+    {% assign cat = site.knowledge_categories | where: "key", item.category | first %}
+    <a class="card k" href="{{ item.url | relative_url }}">
+      <div class="card-meta">{{ cat.name | default: item.category }} · {{ item.date | date: "%b %d, %Y" }}</div>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.summary }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+{% assign recent_projects = site.projects | sort: "date" | reverse | slice: 0, 3 %}
+<section>
+  <div class="section-head">
+    <h2>Featured projects</h2>
+    <a href="{{ '/projects/' | relative_url }}">All projects →</a>
+  </div>
+  <div class="card-grid">
+    {% for item in recent_projects %}
+    <a class="card p" href="{{ item.url | relative_url }}">
+      <div class="card-meta">{{ item.status | default: "Project" }} · {{ item.date | date: "%b %d, %Y" }}</div>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.summary }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>

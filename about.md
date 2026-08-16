@@ -4,24 +4,18 @@ title: About
 permalink: /about/
 ---
 
-# About Me
+# About
 
-Hi, I'm **Your Name**. I'm using this site as a public learning log — writing
-down what I learn as I go, so it sticks better and so others can push back,
-correct me, or point me somewhere useful.
+Hi, I'm **Gemma**. This site is a working log of what I'm learning and
+building — split into two tracks:
 
-## What you'll find here
+**Knowledge** — short write-ups whenever I learn something worth
+remembering, organized by topic (AI, payments, and more as they come up).
+Comments are open on every entry.
 
-- Short write-ups whenever I learn something worth remembering
-- Tags by topic, so you can browse by subject (e.g. `agentic-payments`, `llm-agents`)
-- Comments are open on every post — disagree, add context, or ask questions
-
-## Topics I'm currently exploring
-
-- Agentic payments and AI-driven transaction flows
-- (add more as you go)
+**Projects** — things I've actually built, with the code and a real
+write-up of what worked and what I'd change.
 
 ## Elsewhere
 
 - GitHub: [{{ site.github_username }}](https://github.com/{{ site.github_username }})
-- Email: {{ site.email }}

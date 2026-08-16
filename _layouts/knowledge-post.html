@@ -1,28 +1,28 @@
 ---
 layout: default
 ---
-<article class="post">
-  <h1>{{ page.title }}</h1>
-  <p class="post-meta">
-    {{ page.date | date: "%B %d, %Y" }}
+{% assign cat = site.knowledge_categories | where: "key", page.category | first %}
+<article>
+  <div class="entry-header">
+    <div class="entry-meta-row">
+      <span class="stamp stamp-knowledge">Knowledge · {{ cat.name | default: page.category }}</span>
+      <span>{{ page.date | date: "%B %d, %Y" }}</span>
+    </div>
+    <h1>{{ page.title }}</h1>
     {% if page.tags.size > 0 %}
-      ·
-      {% for tag in page.tags %}
-        <span class="tag">#{{ tag }}</span>
-      {% endfor %}
+    <div class="tag-list">
+      {% for tag in page.tags %}<span class="tag-pill">#{{ tag }}</span>{% endfor %}
+    </div>
     {% endif %}
-  </p>
+  </div>
 
-  <div class="post-content">
+  <div class="entry-content">
     {{ content }}
   </div>
 </article>
 
-<hr>
-
-<!-- ===== Comments (giscus) ===== -->
-<!-- Values below are pulled from _config.yml, which you fill in from https://giscus.app -->
 <section class="comments">
+  <p class="comments-label">Discussion</p>
   <script src="https://giscus.app/client.js"
     data-repo="{{ site.giscus.repo }}"
     data-repo-id="{{ site.giscus.repo_id }}"

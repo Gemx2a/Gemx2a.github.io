@@ -1,0 +1,24 @@
+---
+layout: default
+title: Payment Knowledge
+permalink: /knowledge/payments/
+category_key: payments
+---
+{% assign cat = site.knowledge_categories | where: "key", page.category_key | first %}
+<div class="entry-header">
+  <span class="stamp stamp-knowledge">Knowledge · {{ cat.name }}</span>
+  <h1 style="margin-top:0.75rem;">{{ cat.name }}</h1>
+  <p style="color:var(--ink-soft);">{{ cat.description }}</p>
+</div>
+
+{% assign items = site.knowledge | where: "category", page.category_key | sort: "date" | reverse %}
+<ul class="entry-list">
+  {% for item in items %}
+  <li>
+    <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+    <span class="entry-meta">{{ item.date | date: "%b %d, %Y" }}{% if item.tags.size > 0 %} · {% for t in item.tags %}#{{ t }} {% endfor %}{% endif %}</span>
+  </li>
+  {% else %}
+  <li>No entries yet — add a file to <code>_knowledge/</code> with <code>category: {{ page.category_key }}</code>.</li>
+  {% endfor %}
+</ul>
