@@ -13,9 +13,9 @@ baseurl: ""
 # after connecting your repo. Paste them here ONCE and every post gets comments.
 giscus:
   repo: "Gemx2a/Gemx2a.github.io"
-  repo_id: "PASTE_REPO_ID_HERE"
+  repo_id: "R_kgDOT5lreQ"
   category: "General"
-  category_id: "PASTE_CATEGORY_ID_HERE"
+  category_id: "DIC_kwDOT5lrec4DDeLp"
 
 # Jekyll build settings — leave as is
 markdown: kramdown
